@@ -9,5 +9,6 @@ app.use(morgan("dev"))
 app.use(express.json({limit:'10mb'}))
 app.use(express.urlencoded({extended:false}))
 
+app.use("/api/v1",require("./routes"))
 
 module.exports =app

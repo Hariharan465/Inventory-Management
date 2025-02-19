@@ -9,5 +9,6 @@ connectDB()
 
 
 app.listen(PUBLIC_DATA,prompt,()=>{
-    console.log('the app is listen at http://localhost:${PUBLIC-DATA.port}');
+    console.log(`the app is listen at http://localhost:${PUBLIC-DATA.port}`);
 })
+ 
