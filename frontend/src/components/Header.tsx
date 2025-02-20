@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
+
 const Header = () => {
 
     const dispatch = useDispatch();
@@ -33,6 +35,9 @@ const Header = () => {
                 <div className="btn"> 
             <button className='lg:hidden' onClick={sidebarHandlerToggle}><HiOutlineMenuAlt3 className='text-2xl' /> </button>
             <button className='hidden lg:flex' onClick={sidebarHandler}><HiOutlineMenuAlt3 className='text-2xl' /> </button></div>
+            <div className="logo">
+            <h1 className="text-l md:text-2xl font-thin font-serif">VASANTH CONSTRUCTION</h1>
+                </div>
             <div className="end">
             <button title='logout' className='hidden lg:flex' onClick={logoutHandler}><IoLogOutOutline className='text-2xl' /> </button>
             </div>
