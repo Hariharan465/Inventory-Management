@@ -1,4 +1,5 @@
-const { default: mongoose } = require("mongoose")
+const { default: mongoose } = require("mongoose");
+const { PUBLIC_DATA } = require("../ ../ constant");
 
 exports.connectDB = async()=>{
     try {
