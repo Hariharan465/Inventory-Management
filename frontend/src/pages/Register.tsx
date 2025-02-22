@@ -1,9 +1,12 @@
 import { ErrorMessage, Field, Formik } from 'formik'
 import * as yup from 'yup'
 import { Link } from 'react-router-dom'
+import { useRegisterUserMutation } from '../provider/queries/Auth.query'
+import { Toast } from 'primereact/toast'
 
 
 const Register = () => {
+  const [RegisterUser , RegisterUserResponse] = useRegisterUserMutation()
 
   type User = {
     name:string,
@@ -16,7 +19,7 @@ const Register = () => {
     email:'',
     password : ''
   }
-
+  
   const validationSchema = yup.object({
     name:yup.string().required("*Name is required"),
     email:yup.string().email("email must be valid").required("*email is required"),
@@ -24,7 +27,20 @@ const Register = () => {
   })
 
   const OnSubmitHandler = async(e:User , {resetForm}:any)=>{
-    console.log({e})
+    // console.log({e})
+    try {
+      const { data , error }:any = await RegisterUser(e)
+      if(error){
+        console.log(error.data.message)
+        return
+      }
+      console.log(data,error)
+      resetForm()
+    } catch (error : any) {
+      // toast
+      console.log(error.message)
+    }
+
     resetForm()
   }
 

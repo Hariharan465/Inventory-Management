@@ -25,7 +25,7 @@ export default function BasicDemo() {
                         'rgb(54, 162, 235)',
                         'rgb(153, 102, 255)'
                       ],
-                      borderWidth: 1
+                      borderWidth: 1    
                 }
             ]
         };
@@ -42,7 +42,7 @@ export default function BasicDemo() {
     }, []);
 
     return (
-        <Chart type="bar" width='' className='w-full lg:w-1/2 ' data={chartData} options={chartOptions} />
+        <Chart type="bar" width='' className='w-full mt-10 ml-4 mr-4  lg:w-1/2 ' data={chartData} options={chartOptions} />
     )
 }
         

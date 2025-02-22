@@ -12,7 +12,7 @@ export default function PieChartDemo() {
             labels: ['A', 'B', 'C'],
             datasets: [
                 {
-                    data: [540, 325, 702],
+                    data: [540, 325, 702,],
                     backgroundColor: [
                         documentStyle.getPropertyValue('--blue-500'), 
                         documentStyle.getPropertyValue('--yellow-500'), 
@@ -41,7 +41,7 @@ export default function PieChartDemo() {
     }, []);
 
     return (
-            <Chart type="pie" className='w-full lg:w-[40%] ' data={chartData} options={chartOptions}  />
+            <Chart type="doughnut" className='w-full mt-10 ml-4 mr-4 lg:w-[40%]' data={chartData} options={chartOptions}  />
     )
 }
         
