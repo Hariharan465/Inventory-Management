@@ -4,6 +4,7 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoLogOutOutline } from "react-icons/io5";
 // import { removeUser } from '../provider/slice/user.slice';
 import { useNavigate } from 'react-router-dom';
+import { BsBuildings } from "react-icons/bs";
 
 
 
@@ -36,7 +37,7 @@ const Header = () => {
             <button className='lg:hidden' onClick={sidebarHandlerToggle}><HiOutlineMenuAlt3 className='text-2xl' /> </button>
             <button className='hidden lg:flex' onClick={sidebarHandler}><HiOutlineMenuAlt3 className='text-2xl' /> </button></div>
             <div className="logo">
-            <h1 className="text-l md:text-2xl font-thin font-serif mt-2 mb-2 tracking-wider">VASANTH CONSTRUCTION</h1>
+            <h1 className="text-lg flex md:text-2xl font-serif mt-2 mb-2 tracking-wider">VASANTH CONSTRUCTION <span className="pl-2 "><BsBuildings /></span></h1>
                 </div>
             <div className="end">
             <button title='logout' className='hidden lg:flex' onClick={logoutHandler}><IoLogOutOutline className='text-2xl' /> </button>

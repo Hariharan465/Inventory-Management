@@ -1,2 +1,12 @@
+
 @import "tailwindcss";
 
+@font-face {
+    font-family: Poppins;
+    src: url(../src/assets/fonts/poppins/Poppins-Medium.ttf);
+}
+
+
+@theme{
+    --font-poppins: Poppins , "serif"
+}

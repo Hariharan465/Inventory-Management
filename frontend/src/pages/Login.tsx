@@ -30,33 +30,33 @@ const Login = () => {
 
       {({values , setFieldValue , handleSubmit}) => (
         <>
-        <form onSubmit={handleSubmit} className="w-[96%] md:-[70%] lg:w-1/3 shadow-md rounded-md pt-10 pb-3 px-4 bg-white">
+        <form onSubmit={handleSubmit} className="w-[96%] md:-[70%] lg:w-1/3 shadow-2xl rounded-md pt-10 pb-3 px-4 bg-white">
       <div className="mb-3 py-1">
         <label htmlFor="email">Email</label>
-        <Field id="email" name="email" unstyled className='w-full outline-none py-3 px-2 border-[.1px]
-         border-zinc-400 rounded-lg' placeholder="Enter Email Address"/>
+        <Field id="email" name="email"  className='w-full outline-none py-3 px-2 border-[.1px]
+         border-zinc-400 rounded-md' placeholder="Enter Your Email Address"/>
         </div>
 
         <ErrorMessage component={'p'} className="text-red-500 text-sm" name="email"/>
 
         <div className="mb-3 py-1">
         <label htmlFor="password">Password</label>
-        <Field id="password" name="password" unstyled className='w-full outline-none py-3 px-2 border-[.1px] 
-        border-zinc-400 rounded-lg' placeholder="******"/>
+        <Field id="password" name="password"  className='w-full outline-none py-3 px-2 border-[.1px] 
+        border-zinc-400 rounded-md' placeholder="******"/>
 
         <ErrorMessage component={'p'} className="text-red-500 text-sm" name="password"/>
         </div>
 
         <div className="mb-3 py-1">
-        <button type='submit'  className="w-full bg-red-500 text-white py-3 px-2 flex item-center justify-center rounded-lg">Submit</button>
+        <button type='submit'  className="w-full bg-red-500 text-white py-3 px-2 flex item-center justify-center rounded-md">Submit</button>
         </div>
 
         <div className="mb-3 py-1 flex items-center justify-end">
-          <p className="inline-flex item-center gap-x-1">Don't have an Account?<Link className='font-semibold' to = {'/register'}>Register</Link></p>
+          <p className="inline-flex item-center gap-x-1">Don't have an Account?<Link className='font-semibold text-blue-500  hover:underline' to = {'/register'}>Register</Link></p>
         </div>
 
         <div className="mb-3 py-1 flex items-center justify-end">
-          <p className="inline-flex item-center gap-x-1">Forget<Link className='font-semibold' to = {'#'}>Password?</Link></p>
+          <p className="inline-flex items-center gap-x-1">Forget<Link className='font-semibold text-blue-500  hover:underline' to = {'#'}>Password?</Link></p>
         </div>
         </form>
         </>

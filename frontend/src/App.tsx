@@ -8,32 +8,32 @@ function App() {
   const [loading , setLoading] = useState(true)
   const navigate = useNavigate()
 
-    const fetchUser = (token:string) => {
-      try {
-        setLoading(false)
-        return
-      } catch (error) {
-        navigate("/login")  
-        return
-      }
-    }
-    useEffect(() => {
-      const token = localStorage.getItem("token") || ''
+    // const fetchUser = (token:string) => {
+    //   try {
+    //     setLoading(false)
+    //     return
+    //   } catch (error) {
+    //     navigate("/login")  
+    //     return
+    //   }
+    // }
+    // useEffect(() => {
+    //   const token = localStorage.getItem("token") || ''
 
-      if(!token){
-        navigate("/login")
-        return
-      }else{
-        (async()=>{
-          await fetchUser(token)
-        })()
-      }
+    //   if(!token){
+    //     navigate("/login")
+    //     return
+    //   }else{
+    //     (async()=>{
+    //       await fetchUser(token)
+    //     })()
+    //   }
       
-    },[])
+    // },[])
 
-    if(loading){
-      return <div>Loading...</div>
-    }
+    // if(loading){
+    //   return <div>Loading...</div>
+    // }
 
   return (
     <>
