@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -18,5 +17,7 @@
     "http-status": "^2.1.0",
     "mongoose": "^8.10.1",
     "morgan": "^1.10.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
