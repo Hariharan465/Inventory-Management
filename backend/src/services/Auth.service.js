@@ -1,3 +1,9 @@
+const httpStatus = require("http-status")
+const { UserModel,ProfileModel } = require("../models")
+const ApiError = require("../utils/ApiError")
+const { generatoken } = require("../utils/Token.utils")
+const axios =  require("axios");
+
 class AuthService{
 
     static async RegisterUser(body){

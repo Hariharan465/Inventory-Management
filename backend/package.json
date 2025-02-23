@@ -1,6 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  
   "dependencies": {
     "axios": "^1.7.9",
     "bcryptjs": "^3.0.2",
@@ -20,6 +21,5 @@
     "http-status": "^2.1.0",
     "mongoose": "^8.10.1",
     "morgan": "^1.10.0"
-  },
-  "description": ""
+  }
 }

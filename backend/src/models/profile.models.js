@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = new mongoose.Schema({
     user:{
@@ -8,7 +8,7 @@ const Schema = new mongoose.Schema({
     },
     refresh_token:{
         type:String,
-        default: ' '
+        default:''
     }
 },{timestamps:true})
 

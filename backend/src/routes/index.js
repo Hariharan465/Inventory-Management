@@ -1,10 +1,11 @@
 const router = require("express").Router();
 
+
 const routes= [
     {
-        path:"/auth",
+        path: '/auth',
         route: require("./Auth.route")
-    }
+    },
 ]
 
 
