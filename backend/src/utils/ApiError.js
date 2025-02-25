@@ -1,13 +1,13 @@
-class ApiError extends Error {
+class ApiError extends Error{
     statusCode = 500
     constructor(statusCode,msg){
         super(msg)
         this.message = msg
-        this.statusCode = statusCode;
+        this.statusCode  = statusCode;
 
-        // Error
+        // Error.
 
     }
 }
 
-module.exports = ApiError 
+module.exports =ApiError

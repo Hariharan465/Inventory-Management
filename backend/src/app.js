@@ -8,8 +8,8 @@ const ApiError = require("./utils/ApiError")
 const ErrorHandling = require("./middlewares/ErrorHandler")
 app.use(cors())
 app.use(morgan("dev"))
-app.use(express.json({ limit: '10mb' }))
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json({limit:'10mb'}))
+app.use(express.urlencoded({extended:false}))
 
 app.use("/api/v1",require("./routes"))
 
@@ -18,4 +18,4 @@ app.use("*",(req,res)=>{
 })
 
 app.use(ErrorHandling)
-module.exports = app
+module.exports  =app
