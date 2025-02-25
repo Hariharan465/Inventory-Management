@@ -13,3 +13,5 @@ app.listen(PUBLIC_DATA.port, () => {
     console.log(`the app is listen at http://localhost:${PUBLIC_DATA.port}`);
 }
 )
+
+//views
