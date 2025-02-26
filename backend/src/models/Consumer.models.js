@@ -21,12 +21,7 @@ const Schema = new mongoose.Schema({
                 type:String,
                 required:true,
                 trim:true
-            },
-            dob:{
-                type:Date,
-                required:true,
-                trim:true
-            },
+            },            
             address:{
                 type:String,
                 required:true,

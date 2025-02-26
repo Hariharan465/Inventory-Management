@@ -1,48 +1,77 @@
+ 
 import { Outlet, useNavigate } from 'react-router-dom'
 import Header from './components/Header'
 import MainLayout from './Layout/MainLayout'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser, UserSlicePath } from './provider/slice/user.slice'
+function App() { 
+  const [loading, SetLoading] = useState(true)
+  const navigate= useNavigate() 
+      const dispatch = useDispatch()
+      const selector = useSelector(UserSlicePath)
 
 
-function App() {
-  const [loading , setLoading] = useState(true)
-  const navigate = useNavigate()
+  
+  const fetchUser = async(token:string) => {
+      try {
 
-    // const fetchUser = (token:string) => {
-    //   try {
-    //     setLoading(false)
-    //     return
-    //   } catch (error) {
-    //     navigate("/login")  
-    //     return
-    //   }
-    // }
-    // useEffect(() => {
-    //   const token = localStorage.getItem("token") || ''
+        const {data} = await axios.get(import.meta.env.VITE_BACKEND_URL+"/auth/profile",{
+          headers:{
+            'Authorization': 'Bearer ' + token
+          }
+        })
 
-    //   if(!token){
-    //     navigate("/login")
-    //     return
-    //   }else{
-    //     (async()=>{
-    //       await fetchUser(token)
-    //     })()
-    //   }
-      
-    // },[])
+        console.log(data.user);
+        dispatch(setUser(data.user));
 
-    // if(loading){
-    //   return <div>Loading...</div>
-    // }
+
+        SetLoading(false)
+        return
+      } catch (error) {
+        console.log(error);
+
+        navigate("/login")
+        return
+      }
+
+  }
+  useEffect(() => {
+        const token = localStorage.getItem("token") || ''
+
+        if(!token){
+          navigate("/login")
+          return
+        }else{
+
+          if (selector?.email){
+
+            SetLoading(false)
+            return 
+          }else{ 
+            (async()=>{
+              await fetchUser(token);
+            })()
+          }
+        }
+
+  }, [])
+
+
+  if (loading){
+      return <div>loading....</div>
+  }
 
   return (
     <>
-     <Header />
-      <MainLayout>
 
-      <Outlet/>
+        <Header />
+        <MainLayout>
 
-      </MainLayout>
+        <Outlet />
+        </MainLayout>
+     
     </>
   )
 }

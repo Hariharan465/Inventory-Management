@@ -1,9 +1,14 @@
 import { ErrorMessage, Field, Formik } from 'formik'
 import * as yup from 'yup'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useLoginUserMutation } from '../provider/queries/Auth.query'
+import { Button } from 'primereact/button'
+import { toast } from 'sonner'
 
 
 const Login = () => {
+const [LoginUser , LoginUserResponse] = useLoginUserMutation()
+const navigate = useNavigate()
 
   type User = {
     email:string,
@@ -22,6 +27,25 @@ const Login = () => {
 
   const OnSubmitHandler = async(e:User , {resetForm}:any)=>{
 
+    try {
+      const { data , error }:any = await LoginUser(e)
+      if(error){
+        toast.error(error.data.message)
+        return
+
+      }
+
+      // console.log(data,error)
+
+      localStorage.setItem("token",data.token)
+      toast.success("Loggedin successfully")
+
+      resetForm()
+      navigate("/")
+
+    } catch (error : any) {
+      toast.error(error.message)
+    }
   }
 
   return (
@@ -48,7 +72,7 @@ const Login = () => {
         </div>
 
         <div className="mb-3 py-1">
-        <button type='submit'  className="w-full bg-red-500 text-white py-3 px-2 flex item-center justify-center rounded-md">Submit</button>
+        <Button loading = {LoginUserResponse.isLoading} type='submit'  className="w-full bg-red-500 text-white py-3 px-2 flex item-center justify-center rounded-md">Submit</Button>
         </div>
 
         <div className="mb-3 py-1 flex items-center justify-end">

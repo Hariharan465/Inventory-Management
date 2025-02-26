@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice } from '@reduxjs/toolkit'
 
 export const UserSlice = createSlice({
@@ -9,7 +10,7 @@ export const UserSlice = createSlice({
         setUser(state, action){
             state.user = action.payload
         },
-        removeUser(state, action){
+        removeUser(state){
             state.user = null
         },
     }

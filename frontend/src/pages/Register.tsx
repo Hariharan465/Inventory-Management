@@ -1,12 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ErrorMessage, Field, Formik } from 'formik'
 import * as yup from 'yup'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useRegisterUserMutation } from '../provider/queries/Auth.query'
-import { Toast } from 'primereact/toast'
+import { Button } from 'primereact/button'
+import { toast } from 'sonner'
 
 
 const Register = () => {
   const [RegisterUser , RegisterUserResponse] = useRegisterUserMutation()
+
+  const navigate = useNavigate()
 
   type User = {
     name:string,
@@ -28,17 +32,25 @@ const Register = () => {
 
   const OnSubmitHandler = async(e:User , {resetForm}:any)=>{
     // console.log({e})
+
     try {
       const { data , error }:any = await RegisterUser(e)
       if(error){
-        console.log(error.data.message)
+        toast.error(error.data.message)
         return
+
       }
-      console.log(data,error)
+
+      // console.log(data,error)
+
+      localStorage.setItem("token",data.token)
+      toast.success("Registered Successfully")
+
       resetForm()
+      navigate("/")
+
     } catch (error : any) {
-      // toast
-      console.log(error.message)
+      toast.error(error.message)
     }
 
     resetForm()
@@ -76,7 +88,7 @@ const Register = () => {
         </div>
 
         <div className="mb-3 py-1">
-        <button type='submit' className="w-full bg-red-500 text-white py-3 px-2 flex item-center justify-center rounded-md">Submit</button>
+        <Button loading={RegisterUserResponse.isLoading} type='submit' className="w-full bg-red-500 text-white py-3 px-2 flex item-center justify-center rounded-md">Submit</Button>
         </div>
 
         <div className="mb-3 py-1 flex items-center justify-end">

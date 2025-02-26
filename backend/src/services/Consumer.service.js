@@ -6,7 +6,7 @@ class ConsumerService{
 
     static async RegisterConsumer(user,body){
         
-        const {name,email,mobile,dob,address} = body
+        const {name,email,mobile,address} = body
 
         const checkExist = await ConsumerModel.findOne({email:email,user:user});
 
@@ -16,7 +16,7 @@ class ConsumerService{
         }
 
             await ConsumerModel.create({
-                name,email,mobile,dob,address,user
+                name,email,mobile,address,user
             })
 
             return {
@@ -44,157 +44,157 @@ class ConsumerService{
             }
 
         
-    }
-    static async getById(user,id){
+    // }
+//     static async getById(user,id){
          
 
-        const checkExist = await ConsumerModel.findOne({_id:id,user:user});
+//         const checkExist = await ConsumerModel.findOne({_id:id,user:user});
 
-        console.log({user,id});
+//         console.log({user,id});
 
-        if(!checkExist){
-            throw new ApiError(httpStatus.BAD_REQUEST,"Consumer Not Found in Record");
-            return
-        }
-
-                
-
-            return {
-                user:checkExist
-            }
-
-        
-    }
-
-    
-
-    static async GetAllUser(user,page=1,query=''){
-            const limit = 10;
-                const skip = (Number(page)-1)*limit
-
-                const queryies = {
-                    user,
-                   $or:[
-                    {
-                         name: new RegExp(query)
-                    },
-                    {
-                         email: new RegExp(query)
-                    },
-                    {
-                         address: new RegExp(query)
-                    },
-                    {
-                         mobile: new RegExp(query)
-                    },
-                   ]
-                }
-
-
-       const data =  await ConsumerModel.find(queryies).select("name email mobile")
-                    .skip(skip)
-                    .limit(limit)
-       ;
-
-        //total document
-
-        const totalConsumer = await ConsumerModel.countDocuments(queryies)
-
-
-        //hasmore
-        const hasMore= skip+limit<totalConsumer
-
-
-            return {
-                users:data,
-                more:hasMore
-            }
-
-
-
-
-    }
-    
-    static async updateById(user,body,id){
-        
-        const {name,email,mobile,dob,address} = body
-
-        const checkExist = await ConsumerModel.findById({_id:id});
-
-        if(checkExist.email !==email){
-
-        const checkExistEmail = await ConsumerModel.findOne({email:email,user:user});
-
-        if(checkExistEmail){
-            throw new ApiError(httpStatus.BAD_REQUEST,"Consumer Email Already in Another Record ");
-            return
-        } 
-        }
-
-            await ConsumerModel.findByIdAndUpdate(id,{
-                name,email,mobile,dob,address,user
-            })
-
-            return {
-                msg:"Consumer Update :)"
-            }
-
-        
-    }
-
-     static async GetUserForSearch(user){ 
+//         if(!checkExist){
+//             throw new ApiError(httpStatus.BAD_REQUEST,"Consumer Not Found in Record");
+//             return
+//         }
 
                 
 
+//             return {
+//                 user:checkExist
+//             }
 
-       const data =  await ConsumerModel.find({user}).select("name dob")
+        
+//     }
+
+    
+
+//     static async GetAllUser(user,page=1,query=''){
+//             const limit = 10;
+//                 const skip = (Number(page)-1)*limit
+
+//                 const queryies = {
+//                     user,
+//                    $or:[
+//                     {
+//                          name: new RegExp(query)
+//                     },
+//                     {
+//                          email: new RegExp(query)
+//                     },
+//                     {
+//                          address: new RegExp(query)
+//                     },
+//                     {
+//                          mobile: new RegExp(query)
+//                     },
+//                    ]
+//                 }
+
+
+//        const data =  await ConsumerModel.find(queryies).select("name email mobile")
+//                     .skip(skip)
+//                     .limit(limit)
+//        ;
+
+//         //total document
+
+//         const totalConsumer = await ConsumerModel.countDocuments(queryies)
+
+
+//         //hasmore
+//         const hasMore= skip+limit<totalConsumer
+
+
+//             return {
+//                 users:data,
+//                 more:hasMore
+//             }
+
+
+
+
+//     }
+    
+//     static async updateById(user,body,id){
+        
+//         const {name,email,mobile,address} = body
+
+//         const checkExist = await ConsumerModel.findById({_id:id});
+
+//         if(checkExist.email !==email){
+
+//         const checkExistEmail = await ConsumerModel.findOne({email:email,user:user});
+
+//         if(checkExistEmail){
+//             throw new ApiError(httpStatus.BAD_REQUEST,"Consumer Email Already in Another Record ");
+//             return
+//         } 
+//         }
+
+//             await ConsumerModel.findByIdAndUpdate(id,{
+//                 name,email,mobile,address,user
+//             })
+
+//             return {
+//                 msg:"Consumer Update :)"
+//             }
+
+        
+//     }
+
+//      static async GetUserForSearch(user){ 
+
+                
+
+
+//        const data =  await ConsumerModel.find({user}).select("name dob")
                  
-       ;
+//        ;
 
-        //total document 
+//         //total document 
 
  
 
 
-            return {
-                users:data 
-            }
+//             return {
+//                 users:data 
+//             }
 
 
 
 
-    }
-     static async DashboardData(user){ 
+//     }
+//      static async DashboardData(user){ 
 
                 
 
 
-       const consumers =  await ConsumerModel.countDocuments({user})
-       const orders =  await OrdersModel.find({user}).select("items.price -_id") 
+//        const consumers =  await ConsumerModel.countDocuments({user})
+//        const orders =  await OrdersModel.find({user}).select("items.price -_id") 
                  
-       ;
-         const arr =await  orders.map((cur)=>{
-    // console.log();
-    return [...cur.items.map((c)=>c.price)]
-  })
+//        ;
+//          const arr =await  orders.map((cur)=>{
+//     // console.log();
+//     return [...cur.items.map((c)=>c.price)]
+//   })
 
-    //    let sale =0
+//     //    let sale =0
 
-    //    for (let index = 0; index < array.length; index++) {
-    //     const element = array[index];
+//     //    for (let index = 0; index < array.length; index++) {
+//     //     const element = array[index];
         
-    //    }
+//     //    }
 
-        //total document 
+//         //total document 
 
  
 
 
-            return {
-                consumers,
-                 orders:orders.length,
-                 sell:arr.length>0 ?arr.flat(2).reduce((a,c)=>a+c):arr
-            }
+//             return {
+//                 consumers,
+//                  orders:orders.length,
+//                  sell:arr.length>0 ?arr.flat(2).reduce((a,c)=>a+c):arr
+//             }
 
 
 

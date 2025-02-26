@@ -2,7 +2,7 @@ import { useDispatch  } from "react-redux";
 import { collapsedSidebar , toggleSidebar} from "../provider/slice/Sidebar.slice";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoLogOutOutline } from "react-icons/io5";
-// import { removeUser } from '../provider/slice/user.slice';
+import { removeUser } from '../provider/slice/user.slice';
 import { useNavigate } from 'react-router-dom';
 import { BsBuildings } from "react-icons/bs";
 
@@ -21,7 +21,7 @@ const Header = () => {
     const logoutHandler = ()=>{
         try {
               localStorage.removeItem("token");
-        //   disptach(removeUser())
+              dispatch(removeUser())
           navigate("/login");
         } catch (error:any) {
           console.log(error.message)
