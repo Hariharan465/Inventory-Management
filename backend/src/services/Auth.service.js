@@ -6,7 +6,7 @@ const { generatoken } = require("../utils/Token.utils")
 class AuthService{
        static  async RegisterUser(body){
 
-                // request
+                request
                 const {email,password,name} = body
 
                 // console.log("1---- ",token);

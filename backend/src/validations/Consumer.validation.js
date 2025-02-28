@@ -11,10 +11,10 @@ class ConsumerValidation {
           param("id").isMongoId().withMessage("provide valid Id").notEmpty().withMessage("Id is required")
       ]
 
-  //     static query_page= [
-  //         query("page").optional(),
-  //         query("query").optional(),
-  //     ]
+      static query_page= [
+          query("page").optional(),
+          query("query").optional(),
+      ]
 }
 
 module.exports =ConsumerValidation

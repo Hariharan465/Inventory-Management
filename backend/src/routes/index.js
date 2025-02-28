@@ -10,10 +10,10 @@ const routes= [
          path:'/consumer',
          route:require("./Consumer.route")
       },
-    //    {
-    //       path:'/orders',
-    //       route:require("./Order.route")
-    //   }
+       {
+          path:'/orders',
+          route:require("./Order.route")
+      }
 ]
 
 

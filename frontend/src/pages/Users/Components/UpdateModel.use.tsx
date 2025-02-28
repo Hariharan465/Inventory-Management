@@ -1,16 +1,25 @@
-
-import { Dialog } from "primereact/dialog";
-import { ErrorMessage, Field, Formik } from "formik";
+import React from "react";
 import { toast } from "sonner";
 import * as yup from "yup";
-import { useRegisterConsumerMutation } from "../../../provider/queries/Users.query";
+import { ErrorMessage, Field, Formik } from "formik";
+import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
+import { useGetConsumersQuery, useUpdateConsumerMutation } from "../../../provider/queries/Users.query";
+import Loader from "../../../components/Loader";
 
-const Model = ({ visible, setVisible }: any) => {
-  const [RegisterConsumer, RegisterConsumerResponse] =
-    useRegisterConsumerMutation();
-  
-  
+const UpdateModel = ({ visible, setVisible, _id }: any) => {
+     
+
+    const { isLoading, data } = useGetConsumersQuery(_id)
+
+    // console.log(data)
+    const [updateConsumer, updateConsumerResponse] = useUpdateConsumerMutation()
+    
+    if (isLoading) {
+        return <Loader/>
+    }
+
+
   const validationSchema = yup.object({
     name: yup.string().required("Name is required"),
     email: yup
@@ -22,27 +31,36 @@ const Model = ({ visible, setVisible }: any) => {
   });
 
   const initialValues = {
-    name: "",
-    email: "",
-    mobile: "",
-    address: "",
+    name: data.user.name,
+    email: data.user.email,
+    mobile: data.user.mobile,
+    address: data.user.address,
   };
 
-  const OnSubmitHandler = async (e:any, { resetForm }:any) => {
+  const OnSubmitHandler = async (e: any, { setValues }: any) => {
     try {
       console.log(e);
-      
-      const {data,error }:any = await RegisterConsumer(e)
+
+        const { data, error }: any = await updateConsumer({ data: e, _id: _id })
 
       if (error) {
         toast.error(error.data.message);
         return;
-      }
-      toast.success(data.msg)
-      resetForm()
-      setVisible(false)
-    } catch (e:any) {
-      toast.error(e.message);
+        }
+        setValues({
+            name: e.name,
+            email: e.email,
+            mobile: e.mobile,
+            address: e.address,
+        });
+        toast.success(data.msg)
+        // resetForm()
+        setVisible(false)
+    } catch (error: any) {
+      toast.error(error.message);
+    } finally {
+        
+  
     }
   };
 
@@ -50,10 +68,8 @@ const Model = ({ visible, setVisible }: any) => {
     <>
       <Dialog
         draggable={false}
-        header="Add User"
-        position="top"
         visible={visible}
-        className="w-full md:w-[70%] lg:w-[1/2]"
+        className="w-[90] mx-auto lg:mx-0 lg:w-1/2"
         onHide={() => {
           if (!visible) return;
           setVisible(false);
@@ -122,8 +138,8 @@ const Model = ({ visible, setVisible }: any) => {
                     name="mobile"
                     className="text-red-500 capitalize"
                     component={"p"}
-                  />
-                  
+                     />
+            
 
                   <div className="mb-3">
                     <label htmlFor="address">
@@ -149,11 +165,11 @@ const Model = ({ visible, setVisible }: any) => {
 
                 <div className="flex justify-end">
                   <Button
-                    type = "submit"
-                    loading={RegisterConsumerResponse.isLoading}
+                    type="submit"
+                    loading={updateConsumerResponse.isLoading}
                     className="text-white px-5 rounded-sm bg-black py-2 text-center"
                   >
-                    Add Sight
+                    Update
                   </Button>
                 </div>
               </form>
@@ -165,4 +181,4 @@ const Model = ({ visible, setVisible }: any) => {
   );
 };
 
-export default Model;
+export default UpdateModel;
