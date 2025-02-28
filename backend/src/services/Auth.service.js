@@ -59,21 +59,23 @@ class AuthService{
         const {email,password,name} = body
 
         
-                const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify`,{},{
-                    params:{
-                    secret:process.env.CAPTCHA_SCREATE_KEY,
-                    response:token,
-                }
-                })
+            //     const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify`,{},{
+            //         params:{
+            //         secret:process.env.CAPTCHA_SCREATE_KEY,
+            //         response:token,
+            //     }
+            //     })
 
-                const data =await response.data;
-                console.log("2---- ",JSON.stringify(data));
+            //     const data =await response.data;
+            //     console.log("2---- ",JSON.stringify(data));
 
-                if(!data.success){
-                        // console.log("yhhh it works"); 
+            //     if(!data.success){
+            //             // console.log("yhhh it works"); 
 
-                        throw new ApiError(httpStatus.BAD_REQUEST,"Captcha Not Valid")
-                }
+            //             throw new ApiError(httpStatus.BAD_REQUEST,"Captcha Not Valid")
+            // }
+            
+
                 const checkExist = await UserModel.findOne({email})
                 if(!checkExist){
                     throw new ApiError(httpStatus.BAD_REQUEST,"User Not Regisrered")

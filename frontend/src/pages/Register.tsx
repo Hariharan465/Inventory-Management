@@ -88,7 +88,7 @@ const Register = () => {
         </div>
 
         <div className="mb-3 py-1">
-        <Button loading={RegisterUserResponse.isLoading} type='submit' className="w-full bg-red-500 text-white py-3 px-2 flex item-center justify-center rounded-md">Submit</Button>
+        <Button unstyled loading={RegisterUserResponse.isLoading} type='submit' className="w-full bg-black text-white py-3 px-2 flex item-center justify-center rounded-md">Register</Button>
         </div>
 
         <div className="mb-3 py-1 flex items-center justify-end">

@@ -12,7 +12,7 @@ const UserPage = () => {
 
   return (
     <>
-      <BreadCrumb PageLink="/user" PageName="Users" />
+      <BreadCrumb PageLink="/user" PageName="Sights" />
 
       <div className="mb-3 flex justify-end w-[90%] mx-auto">
         <button

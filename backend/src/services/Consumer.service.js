@@ -20,7 +20,7 @@ class ConsumerService{
             })
 
             return {
-                msg:"Consumer Added :)"
+                msg:"Sight Added Successfully"
             }
 
         
@@ -40,7 +40,7 @@ class ConsumerService{
                 
 
             return {
-                msg:"Consumer Deleted :)"
+                msg:"Sight Deleted Successfully"
             }
 
         
@@ -136,7 +136,7 @@ class ConsumerService{
             })
 
             return {
-                msg:"Consumer Update :)"
+                msg:"Sight Update Successfully",
             }
 
         

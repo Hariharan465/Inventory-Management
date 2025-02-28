@@ -1,5 +1,4 @@
 import ReactDom from 'react-dom/client'
-import React from 'react'
 import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import { Routes } from './provider/Route'
@@ -12,7 +11,7 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
         
 
 ReactDom.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  
 
     <PrimeReactProvider  >
     <Provider store={store}>
@@ -20,6 +19,6 @@ ReactDom.createRoot(document.getElementById('root')!).render(
     <RouterProvider router={Routes} />
     </Provider>
     </PrimeReactProvider>
-  </React.StrictMode>,
+  
 )
 
