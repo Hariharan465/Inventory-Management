@@ -22,6 +22,6 @@ router.patch("/update/:id",ConsumerValidation.RegisterConsumer,Validation,Consum
 
 
 
-
+//
 
 module.exports = router

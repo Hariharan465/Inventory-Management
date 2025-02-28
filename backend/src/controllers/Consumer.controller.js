@@ -15,16 +15,13 @@ class ConsumerController{
             })
             
               static getById= CatchAsync(async(req,res)=>{
-                const res_obj = await ConsumerService.getById(
-                  req?.user,
-                  req.params.id
-                );
+                const res_obj  = await ConsumerService.getById(req?.user,req.params.id);
                 return    res.status(httpStatus.OK).json(res_obj)
                  
             })
             
              static GetAllUser= CatchAsync(async(req,res)=>{
-                const res_obj  = await ConsumerService.GetAllUser(req?.user,req.query?.page);
+                const res_obj  = await ConsumerService.GetAllUser(req?.user,req.query?.page,req.query?.query);
                 return    res.status(httpStatus.OK).json(res_obj)
                  
             })

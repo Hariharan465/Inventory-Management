@@ -10,7 +10,7 @@ import UpdateModel from "./UpdateModel.use";
 const TableCard = ({ data }: any) => {
   const [DeleteConsumer, DeleteConsumerResponse] = useDeleteConsumerMutation();
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   const deleteHandler = (_id: string) => {
     confirmDialog({
@@ -50,8 +50,8 @@ const TableCard = ({ data }: any) => {
         </th>
         <td className="px-6 py-4">{data.email}</td>
         <td className="px-6 py-4">{data.mobile}</td>
-        <td className="px-6 py-4">
-          <button
+        <td className="flex px-6 py-4">
+          <button 
             onClick={() => setVisible(!visible)}
             title="View"
             className="p-4 bg-indigo-600 text-white rounded-sm mx-2"
@@ -59,7 +59,7 @@ const TableCard = ({ data }: any) => {
             <LuView className="text-xl" />
           </button>
           <button
-            
+            onClick={() => setVisible(!visible)}
             title="Edit"
             className="p-4 bg-orange-400 text-white rounded-sm mx-2"
           >

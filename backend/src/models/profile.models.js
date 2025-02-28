@@ -13,7 +13,7 @@ const Schema = new mongoose.Schema({
 },{timestamps:true})
 
 
-
+// 
 
 const model = mongoose.model("profile",Schema)
 module.exports= model

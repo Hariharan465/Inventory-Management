@@ -1,51 +1,50 @@
 const httpStatus = require("http-status")
 const { ConsumerModel, OrdersModel } = require("../models")
 const ApiError = require("../utils/ApiError")
-class ConsumerService {
+class ConsumerService{
 
 
-    static async RegisterConsumer(user, body) {
+    static async RegisterConsumer(user,body){
         
-        const { name, email, mobile, address } = body
+        const {name,email,mobile,address} = body
 
-        const checkExist = await ConsumerModel.findOne({ email: email, user: user });
+        const checkExist = await ConsumerModel.findOne({email:email,user:user});
 
-        if (checkExist) {
-            throw new ApiError(httpStatus.BAD_REQUEST, "Consumer Already in Record");
+        if(checkExist){
+            throw new ApiError(httpStatus.BAD_REQUEST,"Email already exists");
             return
         }
 
-        await ConsumerModel.create({
-            name, email, mobile, address, user
-        })
+            await ConsumerModel.create({
+                name,email,mobile,address,user
+            })
 
-        return {
-            msg: "Consumer Added :)"
-        }
+            return {
+                msg:"Consumer Added :)"
+            }
 
         
     }
 
-    static async DeleteConsumer(user, id) {
+    static async DeleteConsumer(user,id){
          
 
-        const checkExist = await ConsumerModel.findOneAndDelete({ _id: id, user: user });
+        const checkExist = await ConsumerModel.findOneAndDelete({_id:id,user:user});
 
-        if (!checkExist) {
-            throw new ApiError(httpStatus.BAD_REQUEST, "Consumer Not Found in Record");
+        if(!checkExist){
+            throw new ApiError(httpStatus.BAD_REQUEST,"Consumer Not Found in Record");
             return
         }
 
-        await OrdersModel.deleteMany({ consumer: id })
+                await OrdersModel.deleteMany({consumer:id})
                 
 
-        return {
-            msg: "Consumer Deleted :)"
-        }
-    }
+            return {
+                msg:"Consumer Deleted :)"
+            }
 
-    
- 
+        
+    }
     static async getById(user,id){
          
 
