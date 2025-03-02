@@ -12,13 +12,14 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 
 ReactDom.createRoot(document.getElementById('root')!).render(
   
-
+    
     <PrimeReactProvider  >
     <Provider store={store}>
       <Toaster position='top-right' closeButton pauseWhenPageIsHidden />
     <RouterProvider router={Routes} />
     </Provider>
     </PrimeReactProvider>
+    
   
 )
 

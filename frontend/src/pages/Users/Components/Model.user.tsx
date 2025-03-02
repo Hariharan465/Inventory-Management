@@ -50,7 +50,7 @@ const Model = ({ visible, setVisible }: any) => {
     <>
       <Dialog
         draggable={false}
-        header="Add User"
+        header="Add Sight"
         position="top"
         visible={visible}
         className="w-full md:w-[70%] lg:w-[1/2]"
@@ -149,11 +149,12 @@ const Model = ({ visible, setVisible }: any) => {
 
                 <div className="flex justify-end">
                   <Button
+                   unstyled
                     type = "submit"
                     loading={RegisterConsumerResponse.isLoading}
-                    className="text-white px-5 rounded-sm bg-black py-2 text-center"
+                    className="text-white px-5 rounded-sm bg-black py-3 text-center"
                   >
-                    Add Sight
+                    Add
                   </Button>
                 </div>
               </form>

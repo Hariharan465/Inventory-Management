@@ -17,14 +17,13 @@ export const UserApi = createApi({
       invalidatesTags: ["getAllConsumer"],
     }),
 
-    getAllConsumer: builder.query<any, any>({
+    getAllConsumers: builder.query<any, any>({
       query: (obj) => ({
-        url: "/consumer/get-all",
-        method: "GET",
-        body: obj,
-        headers: {
-          'Authorization': "Bearer " + localStorage.getItem("token"),
-        },
+          url: `/consumer/get-all?query=${obj.query}&page=${obj.page}`,
+          method: 'GET',
+          headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem("token")
+          }
       }),
       providesTags: ["getAllConsumer"],
     }),
@@ -69,7 +68,7 @@ export const UserApi = createApi({
 
 export const {
   useRegisterConsumerMutation,
-  useGetAllConsumerQuery,
+  useGetAllConsumersQuery,
   useDeleteConsumerMutation,
   useGetConsumersQuery,
   useUpdateConsumerMutation

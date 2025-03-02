@@ -69,7 +69,7 @@ class ConsumerService{
     
 
     static async GetAllUser(user,page=1,query=''){
-            const limit = 10;
+            const limit = 20;
                 const skip = (Number(page)-1)*limit
 
                 const queryies = {

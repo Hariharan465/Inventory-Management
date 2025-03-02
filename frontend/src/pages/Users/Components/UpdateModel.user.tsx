@@ -1,4 +1,3 @@
-import React from "react";
 import { toast } from "sonner";
 import * as yup from "yup";
 import { ErrorMessage, Field, Formik } from "formik";
@@ -22,10 +21,7 @@ const UpdateModel = ({ visible, setVisible, _id }: any) => {
 
   const validationSchema = yup.object({
     name: yup.string().required("Name is required"),
-    email: yup
-      .string()
-      .email("email must be valid")
-      .required("*email is required"),
+    email: yup.string().email("email must be valid").required("*email is required"),
     mobile: yup.string().required("Mobile is required"),
     address: yup.string().required("Address is required"),
   });
@@ -165,9 +161,10 @@ const UpdateModel = ({ visible, setVisible, _id }: any) => {
 
                 <div className="flex justify-end">
                   <Button
+                    unstyled
                     type="submit"
                     loading={updateConsumerResponse.isLoading}
-                    className="text-white px-5 rounded-sm bg-black py-2 text-center"
+                    className="text-white px-5 rounded-sm bg-black py-3 text-center"
                   >
                     Update
                   </Button>
