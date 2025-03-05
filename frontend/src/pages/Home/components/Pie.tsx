@@ -1,18 +1,32 @@
 
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
+import { useDashboardDataQuery } from '../../../provider/queries/Users.query';
+import Loader from '../../../components/Loader';
+import { useLocation } from 'react-router-dom';
 
 export default function PieChartDemo() {
+
+    const { data , isLoading , isError , isFetching } = useDashboardDataQuery({})
+    const location = useLocation()
+
+
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
 
     useEffect(() => {
+
+        if(!data){
+            return
+        }
+
+
         const documentStyle = getComputedStyle(document.documentElement);
-        const data = {
-            labels: ['A', 'B', 'C'],
+        const chartData = {
+            labels: ['sight', 'Material', 'Material Costs'],
             datasets: [
                 {
-                    data: [540, 325, 702,],
+                    data: [ data.consumers , data.orders , data.sell ],
                     backgroundColor: [
                         documentStyle.getPropertyValue('--blue-500'), 
                         documentStyle.getPropertyValue('--yellow-500'), 
@@ -36,9 +50,19 @@ export default function PieChartDemo() {
             }
         };
 
-        setChartData(data);
+        setChartData(chartData);
         setChartOptions(options);
-    }, []);
+    }, [data , location]);
+
+    if( isFetching || isLoading ){
+        return <Loader />
+    } 
+
+    if( isError ){
+        return <>
+          Something went wrong
+        </>
+    } 
 
     return (
             <Chart type="doughnut" className='w-full mt-10 ml-4 mr-4 lg:w-[40%]' data={chartData} options={chartOptions}  />

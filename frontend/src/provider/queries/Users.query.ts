@@ -74,6 +74,16 @@ export const UserApi = createApi({
         
       invalidatesTags: ["getAllConsumer" , "getConsumer"],
     }),
+
+    dashboardData: builder.query<any, any>({
+      query: () => ({
+        url: "/consumer/dashboard/",
+        method: "GET",
+        headers: {
+          'Authorization': "Bearer " + localStorage.getItem("token"),
+        },
+      })
+    }),
   }),
 });
 
@@ -83,5 +93,6 @@ export const {
   useDeleteConsumerMutation,
   useGetConsumersQuery,
   useUpdateConsumerMutation,
-  useGetForSearchUserQuery
+  useGetForSearchUserQuery,
+  useDashboardDataQuery
 } = UserApi;

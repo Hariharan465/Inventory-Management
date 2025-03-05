@@ -54,4 +54,4 @@ export const OrdersApi = createApi({
 })
 
 
-export const { useCreateOrderMutation,useGetAllOrdersQuery , useDeleteOrderMutation ,useGetInvoiceByIdQuery} = OrdersApi
+export const { useCreateOrderMutation , useGetAllOrdersQuery , useDeleteOrderMutation ,useGetInvoiceByIdQuery} = OrdersApi

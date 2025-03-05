@@ -98,8 +98,8 @@ const TableCard = ({ data, id }: any) => {
                 </td>
             </tr>
             {/* <UpdateModel visible={visible} setVisible={setVisible} _id={data._id} /> */}
-            <ShowAndPrintModel visible={visible} setVisible={setVisible} />
-            <ConfirmDialog id='order.queruies' acceptClassName='' className=' ' contentClassName='py-2 ' closable />
+            <ShowAndPrintModel id={data._id} visible={visible} setVisible={setVisible} />
+            <ConfirmDialog id='' acceptClassName='' className=' ' contentClassName='py-2 ' closable />
 
         </>
     )
