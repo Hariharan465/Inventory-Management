@@ -9,15 +9,16 @@ class OrderService{
                                 user,
                                 consumer:body.user,
                                     items:body.items
+                                    
                             })
 
             return {
-                      msg:"Order Created Successfully"
+                      msg:"Material Updated Successfully"
             }
 
         }
   static async getAllorders(user,page=1,query){
-    const limit =10
+    const limit =5
     const perPage = (Number(page)-1)*limit
 
 
@@ -60,7 +61,7 @@ class OrderService{
                 
 
             return {
-               msg:'Order Delete Successfully'
+               msg:'Material Deleted Successfully'
                 
             }
 

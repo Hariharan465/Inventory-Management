@@ -7,19 +7,15 @@ const router = express.Router();
 
 router.use(Authentication);
 
-router.route("/create-order")
-.post(CreateOrder,Validation,OrdersController.createOrder)
+router.route("/create-order").post(CreateOrder,Validation,OrdersController.createOrder)
 
-router.route("/get-orders")
-.get(OrdersController.getAllorders)
+router.route("/get-orders").get(OrdersController.getAllorders)
 
 
 
-router.route("/get-invoice/:id")
-.get(OrdersController.getInvoiceById)
+router.route("/get-invoice/:id").get(OrdersController.getInvoiceById)
 
-router.route("/delete/:id")
-.delete(OrdersController.deleteOrder)
+router.route("/delete/:id").delete(OrdersController.deleteOrder)
 
 
 

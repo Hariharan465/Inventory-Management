@@ -58,9 +58,9 @@ const UserPage = () => {
 
   const onSubmitHandler = (e:FormEvent<HTMLFormElement>)=>{ 
     e.preventDefault();
-    // if (!Search){
-    //   return 
-    // }
+    if (!Search){
+      return 
+    }
     let string = `?query=${Search}&page=${1}`
     navigate(`/user` + string);
 
@@ -76,7 +76,7 @@ const UserPage = () => {
     <>  
      
 
-        <BreadCrumb PageLink='/user' PageName='Sights' /> 
+        <BreadCrumb PageLink='/user' PageName='Sight' /> 
  
               <div className="mb-3 flex justify-end w-[90%] mx-auto">
                 <button onClick={()=>setVisible(!visible)} className="px-5 py-3 bg-black text-white rounded-sm">Add Sight</button>

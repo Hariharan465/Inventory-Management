@@ -32,7 +32,7 @@ class ConsumerService{
         const checkExist = await ConsumerModel.findOneAndDelete({_id:id,user:user});
 
         if(!checkExist){
-            throw new ApiError(httpStatus.BAD_REQUEST,"Consumer Not Found in Record");
+            throw new ApiError(httpStatus.BAD_REQUEST,"Sight Not Found in Record");
             return
         }
 
@@ -69,7 +69,7 @@ class ConsumerService{
     
 
     static async GetAllUser(user,page=1,query=''){
-            const limit = 20;
+            const limit = 10;
                 const skip = (Number(page)-1)*limit
 
                 const queryies = {

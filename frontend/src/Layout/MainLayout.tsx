@@ -26,7 +26,7 @@ const MainLayout = ({ children } : {children:React.ReactNode}) => {
     </SubMenu> */}
     <MenuItem className='lg:hidden'  onClick={()=> dispatch(toggleSidebar()) }>{selector.toggle ? <IoIosArrowDropleft className='text-2xl'/>:<IoIosArrowDropright className='text-2xl'/>}</MenuItem>
     <MenuItem component={<Link to={"/"}/>} icon={<MdOutlineSpaceDashboard className='text-2xl'/>}> Dashboard </MenuItem>
-    <MenuItem component={<Link to={"/orders"}/>} icon={<FiBox className='text-2xl'/>}> Materials </MenuItem>
+    <MenuItem component={<Link to={"/orders"}/>} icon={<FiBox className='text-2xl'/>}> Material </MenuItem>
     <MenuItem component={<Link to={"/user"}/>} icon={<FaRegBuilding className='text-2xl'/>}> Sight </MenuItem>
 
   </Menu>

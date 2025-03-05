@@ -67,7 +67,6 @@ const UpdateModel = ({ visible, setVisible, _id }: any) => {
         visible={visible}
         className="w-[90] mx-auto lg:mx-0 lg:w-1/2"
         onHide={() => {
-          if (!visible) return;
           setVisible(false);
         }}
       >

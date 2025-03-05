@@ -28,6 +28,17 @@ export const UserApi = createApi({
       providesTags: ["getAllConsumer"],
     }),
 
+    getForSearchUser: builder.query<any, any>({
+      query: (obj) => ({
+          url: `/consumer/get-search`,
+          method: 'GET',
+          headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem("token")
+          }
+      }),
+      providesTags: ["getAllConsumer"],
+    }),
+
     deleteConsumer: builder.mutation<any, any>({
       query: (_id) => ({
         url: "/consumer/delete/"+_id,
@@ -71,5 +82,6 @@ export const {
   useGetAllConsumersQuery,
   useDeleteConsumerMutation,
   useGetConsumersQuery,
-  useUpdateConsumerMutation
+  useUpdateConsumerMutation,
+  useGetForSearchUserQuery
 } = UserApi;

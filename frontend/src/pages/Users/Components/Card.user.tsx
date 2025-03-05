@@ -40,7 +40,6 @@ const TableCard = ({ data , id }: any) => {
   };
   return (
     <>
-    <ConfirmDialog draggable={false}/>
 
       <tr className="bg-white border-b  border-gray-200">
       <th
@@ -85,6 +84,7 @@ const TableCard = ({ data , id }: any) => {
         </td>
       </tr>
     <UpdateModel visible={ visible} setVisible={setVisible} _id={data._id} />
+    <ConfirmDialog acceptClassName="" className="" contentClassName="py-2" closable draggable={false}/>
 
 
     </>

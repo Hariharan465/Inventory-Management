@@ -152,7 +152,7 @@ const Model = ({ visible, setVisible }: any) => {
                    unstyled
                     type = "submit"
                     loading={RegisterConsumerResponse.isLoading}
-                    className="text-white px-5 rounded-sm bg-black py-3 text-center"
+                    className="text-white px-4 rounded-sm bg-black py-2 text-center"
                   >
                     Add
                   </Button>
